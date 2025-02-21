@@ -17,12 +17,14 @@ STEP TO FOLLOW to replicate the process:
 4. Launch NiFi
 5. Go to [mockaroo](https://mockaroo.com/) and save your schema:
    - Mine is like in this picture (JSON format, 1000 rows, not check null record)  
+![mockaroo_image](/mockaroo_schema.png?raw=true)  
    - By going into page 'Schemas', scroll down to 'Generating data via cURL' an save the link after curl "..."
 7. Upload into NiFi the **NiFi_Flow.json**
-8. Open the group
+8. ![NiFi_screenshot](/NiFi_screenshot.jpg)
+9. Open the group
    - Open the first processor InvokeHTTP and change the link saved in point 4.
-9. Right-click in empty space and "Enable all controller services"
-10. Run **only** the first processor InvokeHTTP and wait at least 200 seconds
+10. Right-click in empty space and "Enable all controller services"
+11. Run **only** the first processor InvokeHTTP and wait at least 200 seconds
    - On the sticky note it's explained the download limit for a free account on mockaroo, it's 200 requests per day
 11. After reaching >=200 Task/time, stop first processor and run MergeRecord
 12. Run UpdateAttribute
@@ -37,11 +39,12 @@ STEP TO FOLLOW to replicate the process:
 16. Open in browser Dremio (http://localhost:9047/)
 17. Upload your dataset just created *mockaroo0.json*
 18. Go to SQL runner section and paste the content of the file dremio_history.sql
-19. Select context _nessi-main_
-20. Run lines from 11 to 28
-21. Run SELECT * .. (line 31)
-22. Run SELECT * .. (line 32)
-23. Go to Jobs section and open in a new panel the first two results (runs at points 22 and 21)
-24. Analyze them 
+    - Keep an eye on line 16. Since I have a date column, I partitioned it based on YEAR(). Partition is based on this column. If yours is different, please adapt the script.   
+20. Select context _nessi-main_
+21. Run lines from 11 to 28
+22. Run SELECT * .. (line 31)
+23. Run SELECT * .. (line 32)
+24. Go to Jobs section and open in a new panel the first two results (runs at points 22 and 21)
+25. Analyze them 
 
 
