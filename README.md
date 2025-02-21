@@ -1,5 +1,5 @@
 # SimpleETL-NiFi
-This study aims to show the potentiality of the new Apache Iceberg implemented by Dremio environment. 
+This study aims to show the potentiality of the new Apache Iceberg implemented by Dremio. 
 
 :warning: Keep in mind I'm not a developer but a Data Scientist / Engineer :warning:  
 This study is made only to verify the potentiality of Iceberg. It's neither optimazed nor fully automated.  
